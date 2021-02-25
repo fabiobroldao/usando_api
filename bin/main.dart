@@ -76,3 +76,4 @@ Dentro do arquivo main aí vocês desenvolvem o menu e pegam as entradas pelo te
 
 URL_BASE: https://api-cards-growdev.herokuapp.com
 */
+void main() {}
