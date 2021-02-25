@@ -1,11 +1,13 @@
 /*
 E aí galerinhaaaaaaaaaa, vamos ao um desafio?
 
-Então, eu tenho uma API que está lá no Heroku (Uma plataforma para fazer deploy e disponibilizar aplicações), essa API ela foi feita no Programa Starter aqui na growdev, e tem algumas funcionalidades, como criar, atualizar, deletar e consultar cards.
+Então, eu tenho uma API que está lá no Heroku (Uma plataforma para fazer deploy e disponibilizar aplicações), 
+essa API ela foi feita no Programa Starter aqui na growdev, e tem algumas funcionalidades, como criar, atualizar, deletar e consultar cards.
 
 O desafio vai ser interagir com essa API e exercitar requisições para API's, tratativas de erros e programação assíncrona.
 
-Para esse desafio é preciso fazer "uma interface" (interface de usuário, com opções onde o usuário interage) para o usuário ficar interagindo até querer sair, então mais ou menos deve ser assim a saída:
+Para esse desafio é preciso fazer "uma interface" (interface de usuário, com opções onde o usuário interage) 
+para o usuário ficar interagindo até querer sair, então mais ou menos deve ser assim a saída:
 
 ==========================================
 Bem-vindo ao sistema de Cards o/
