@@ -78,4 +78,37 @@ Dentro do arquivo main aí vocês desenvolvem o menu e pegam as entradas pelo te
 
 URL_BASE: https://api-cards-growdev.herokuapp.com
 */
-void main() {}
+import 'dart:io';
+
+void main() {
+  String comandos;
+  var menu = '''
+  ==========================================
+  Bem-vindo ao sistema de Cards o/
+
+  Escolha uma das opções:
+  1 - Buscar todos os cards (verbo: GET, url: /cards)
+  2 - Buscar card pelo ID  (verbo: GET, url: /cards/ID )
+  3 - Criar card (verbo: POST, url: /cards, data: objeto para criar)
+  4 - Atualizar card (verbo: PUT, url: /cards/ID, data: objeto para atualizar)
+  5 - Deletar card (verbo: DELETE, url: /cards/ID)
+  6 - Sair
+  ===========================================
+  
+  ''';
+
+  while (comandos != '6') {
+    print(menu);
+    comandos = stdin.readLineSync();
+    print('$comandos : não é 6! portanto... vamos em frente...');
+  }
+
+  print('''
+
+  Finalizar o programa com o saída: 
+  ===========================
+  Saíndo do sistema....
+  Valeu, falows \o
+  ===========================
+  ''');
+}
