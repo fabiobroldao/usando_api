@@ -81,7 +81,7 @@ URL_BASE: https://api-cards-growdev.herokuapp.com
 import 'dart:io';
 
 void main() {
-  String comandos;
+  String opcao;
   var menu = '''
   ==========================================
   Bem-vindo ao sistema de Cards o/
@@ -94,13 +94,13 @@ void main() {
   5 - Deletar card (verbo: DELETE, url: /cards/ID)
   6 - Sair
   ===========================================
-  
+
   ''';
 
-  while (comandos != '6') {
+  while (opcao != '6') {
     print(menu);
-    comandos = stdin.readLineSync();
-    print('$comandos : não é 6! portanto... vamos em frente...');
+    opcao = stdin.readLineSync();
+    print('$opcao : não é 6! portanto... vamos em frente...');
   }
 
   print('''
