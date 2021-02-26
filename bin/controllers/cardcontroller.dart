@@ -9,6 +9,21 @@
    3.1.6 Criar método para remover card
 */
 
+import '../entities/card.dart';
 import '../services/cardservice.dart';
 
-class CardController extends CardService {}
+class CardController {
+  CardService cs = CardService();
+
+  Future<List<Card>> fetch() async {
+    try {
+      return await cs.getCards();
+    } finally {}
+  }
+
+  Future<Card> getCard(int id) async {
+    try {
+      return await cs.getCard(id);
+    } finally {}
+  }
+}

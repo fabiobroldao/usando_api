@@ -8,4 +8,43 @@
      2.1.5 Criar método para deletar card
 */
 
-class CardService {}
+import 'package:dio/dio.dart';
+
+import '../entities/card.dart';
+
+class CardService {
+  var url = 'https://api-cards-growdev.herokuapp.com';
+
+  Future<List<Card>> getCards() async {
+    try {
+      var dio = Dio(BaseOptions(baseUrl: url));
+
+      var response = await dio.get('/cards');
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var cards =
+            (response.data as List).map((e) => Card.fromMap(e)).toList();
+        return cards;
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<Card> getCard(int id) async {
+    try {
+      var dio = Dio(BaseOptions(baseUrl: url));
+
+      var response = await dio.get('/cards/$id');
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        var card = Card.fromMap(response.data);
+        return card;
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+}

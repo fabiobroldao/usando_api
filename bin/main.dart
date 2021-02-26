@@ -80,7 +80,9 @@ URL_BASE: https://api-cards-growdev.herokuapp.com
 */
 import 'dart:io';
 
-void main() {
+import 'controllers/cardcontroller.dart';
+
+void main() async {
   String opcao;
   var menu = '''
   ==========================================
@@ -99,7 +101,23 @@ void main() {
 
   while (opcao != '6') {
     print(menu);
+    var cc = CardController();
     opcao = stdin.readLineSync();
+    switch (opcao) {
+      case '1':
+        var cards = await cc.fetch();
+        cards.forEach((c) {
+          print(c.toMap());
+        });
+        break;
+      case '2':
+        print('Digite um código de card:');
+        var id = int.tryParse(stdin.readLineSync());
+        var card = await cc.getCard(id);
+        print(card.toMap());
+        break;
+      default:
+    }
     print('$opcao : não é 6! portanto... vamos em frente...');
   }
 
