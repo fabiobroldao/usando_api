@@ -69,7 +69,7 @@ class CardService {
       final dio = Dio(BaseOptions(baseUrl: url));
 
       var response = await dio
-          .put('/cards', data: {'id': id, 'data': title, 'content': content});
+          .put('/cards/$id', data: {'data': title, 'content': content});
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         return Card.fromMap(response.data);
