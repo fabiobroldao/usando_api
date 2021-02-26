@@ -118,7 +118,7 @@ void main() async {
         break;
       default:
     }
-    print('$opcao : não é 6! portanto... vamos em frente...');
+    //print('$opcao : não é 6! portanto... vamos em frente...');
   }
 
   print('''
