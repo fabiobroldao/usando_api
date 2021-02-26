@@ -16,52 +16,39 @@ class CardService {
   var url = 'https://api-cards-growdev.herokuapp.com';
 
   Future<List<Card>> getCards() async {
-    try {
-      final dio = Dio(BaseOptions(baseUrl: url));
+    final dio = Dio(BaseOptions(baseUrl: url));
 
-      var response = await dio.get('/cards');
+    var response = await dio.get('/cards');
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        var cards =
-            (response.data as List).map((e) => Card.fromMap(e)).toList();
-        return cards;
-      }
-      return null;
-    } catch (e) {
-      return null;
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      var cards = (response.data as List).map((e) => Card.fromMap(e)).toList();
+      return cards;
     }
+    return null;
   }
 
   Future<Card> getCard(int id) async {
-    try {
-      final dio = Dio(BaseOptions(baseUrl: url));
+    final dio = Dio(BaseOptions(baseUrl: url));
 
-      var response = await dio.get('/cards/$id');
+    var response = await dio.get('/cards/$id');
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        var card = Card.fromMap(response.data);
-        return card;
-      }
-      return null;
-    } catch (e) {
-      return null;
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      var card = Card.fromMap(response.data);
+      return card;
     }
+    return null;
   }
 
   Future<Card> postCard(int id, String title, String content) async {
-    try {
-      final dio = Dio(BaseOptions(baseUrl: url));
+    final dio = Dio(BaseOptions(baseUrl: url));
 
-      var response = await dio
-          .post('/cards', data: {'id': id, 'title': title, 'content': content});
+    var response = await dio
+        .post('/cards', data: {'id': id, 'title': title, 'content': content});
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        return Card.fromMap(response.data);
-      }
-      return null;
-    } catch (e) {
-      return null;
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return Card.fromMap(response.data);
     }
+    return null;
   }
 
   Future<Card> updateCard(int id, String title, String content) async {
@@ -81,17 +68,13 @@ class CardService {
   }
 
   Future<Card> deleteCard(int id) async {
-    try {
-      final dio = Dio(BaseOptions(baseUrl: url));
+    final dio = Dio(BaseOptions(baseUrl: url));
 
-      var response = await dio.delete('/cards/$id');
+    var response = await dio.delete('/cards/$id');
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        return Card.fromMap(response.data);
-      }
-      return null;
-    } catch (e) {
-      return null;
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return Card.fromMap(response.data);
     }
+    return null;
   }
 }

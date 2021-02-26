@@ -16,23 +16,27 @@ class CardController {
   CardService cs = CardService();
 
   Future<List<Card>> fetch() async {
-    try {
-      return await cs.getCards();
-    } finally {}
+    return await cs.getCards();
   }
 
   Future<Card> getCard(int id) async {
-    try {
-      return await cs.getCard(id);
-    } finally {}
+    return await cs.getCard(id);
   }
 
   Future<Card> postCard(String title, String content) async {
+    var cards = await cs.getCards();
+    var id = cards.last.id + 1;
+    await cs.postCard(id, title, content);
+    return await cs.getCard(id);
+  }
+
+  Future<Card> updateCard(int id, String title, String content) async {
     try {
-      var cards = await cs.getCards();
-      var id = cards.last.id + 1;
-      await cs.postCard(id, title, content);
-      return await cs.getCard(id);
+      var resposta = await cs.updateCard(id, title, content);
+      if (resposta != null) {
+        return await cs.getCard(id);
+      }
+      return null;
     } finally {}
   }
 
@@ -46,16 +50,6 @@ class CardController {
         }
       }
 
-      return null;
-    } finally {}
-  }
-
-  Future<Card> updateCard(int id, String title, String content) async {
-    try {
-      var resposta = await cs.updateCard(id, title, content);
-      if (resposta != null) {
-        return await cs.getCard(id);
-      }
       return null;
     } finally {}
   }
