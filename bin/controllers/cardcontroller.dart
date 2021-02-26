@@ -52,8 +52,11 @@ class CardController {
 
   Future<Card> updateCard(int id, String title, String content) async {
     try {
-      await cs.updateCard(id, title, content);
-      return await cs.getCard(id);
+      var resposta = await cs.updateCard(id, title, content);
+      if (resposta != null) {
+        return await cs.getCard(id);
+      }
+      return null;
     } finally {}
   }
 }
