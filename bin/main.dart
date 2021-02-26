@@ -101,6 +101,7 @@ void main() async {
   print(menu);
   while (opcao != '6') {
     var cc = CardController();
+    print('Informe uma nova opção:');
     opcao = stdin.readLineSync();
     switch (opcao) {
       case '1':
@@ -132,7 +133,11 @@ void main() async {
         var title = stdin.readLineSync();
         print('Digite um novo conteúdo para o card nº $id:');
         var content = stdin.readLineSync();
-        await cc.updateCard(id, title, content);
+        var resposta = await cc.updateCard(id, title, content);
+        if (resposta != null) {
+          print('Código ${resposta.id} atualizado!');
+        } else
+          print('Código Não encontrado!');
         break;
 
       case '5':
