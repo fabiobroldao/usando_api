@@ -150,6 +150,7 @@ void main() async {
       default:
     }
     //print('$opcao : não é 6! portanto... vamos em frente...');
+    // novo comentario
   }
   print('''
 
