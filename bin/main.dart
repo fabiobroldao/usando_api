@@ -133,16 +133,12 @@ void main() async {
         var title = stdin.readLineSync();
         print('Digite um novo conteúdo para o card nº $id:');
         var content = stdin.readLineSync();
-<<<<<<< HEAD
-        var card = await cc.updateCard(id, title, content);
-        print(card.toMap());
-=======
         var resposta = await cc.updateCard(id, title, content);
         if (resposta != null) {
           print('Código ${resposta.id} atualizado!');
-        } else
+        } else {
           print('Código Não encontrado!');
->>>>>>> 0f63842a999f069d1c29d2b9c456ec7802e80344
+        }
         break;
 
       case '5':
