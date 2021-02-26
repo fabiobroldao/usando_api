@@ -46,15 +46,15 @@ Saíndo do sistema....
 Valeu, falows \o
 ===========================
 
-Para esse desafio vocês vão criar a seguinte estrutura:
-1. Criar uma pasta entities
-  1.1 Dentro da pasta entities criar uma classe chamada Card com as seguintes características
-       1.1.1 int id
-       1.1.2 String title
-       1.1.3 String content
-       1.1.4 Construtor normal que recebe id, title e content
-       1.1.4 Construtor com nome fromJson que pega os valores do map e coloca nos atributos
-       1.1.5 Método toJson() que retorna um map com as informações do Card
+FEITO: Para esse desafio vocês vão criar a seguinte estrutura:
+FEITO: 1. Criar uma pasta entities
+FEITO:   1.1 Dentro da pasta entities criar uma classe chamada Card com as seguintes características
+FEITO:        1.1.1 int id
+FEITO:        1.1.2 String title
+FEITO:        1.1.3 String content
+FEITO:        1.1.4 Construtor normal que recebe id, title e content
+FEITO:        1.1.4 Construtor com nome fromJson que pega os valores do map e coloca nos atributos
+FEITO:        1.1.5 Método toJson() que retorna um map com as informações do Card
 
 2 Criar uma pasta services
   2.1 Criar uma classe CardService
@@ -98,9 +98,8 @@ void main() async {
   ===========================================
 
   ''';
-
+  print(menu);
   while (opcao != '6') {
-    print(menu);
     var cc = CardController();
     opcao = stdin.readLineSync();
     switch (opcao) {
@@ -110,12 +109,38 @@ void main() async {
           print(c.toMap());
         });
         break;
+
       case '2':
         print('Digite um código de card:');
-        var id = int.tryParse(stdin.readLineSync());
-        var card = await cc.getCard(id);
+        var card = await cc.getCard(int.tryParse(stdin.readLineSync()));
         print(card.toMap());
         break;
+
+      case '3':
+        print('Digite o título do novo card:');
+        var title = stdin.readLineSync();
+        print('Digite o conteúdo do novo card:');
+        var content = stdin.readLineSync();
+        var card = await cc.postCard(title, content);
+        print(card.toMap());
+        break;
+
+      case '4':
+        print('Digite o código de card a ser atualizado:');
+        var id = int.tryParse(stdin.readLineSync());
+        print('Digite um novo título para o card nº $id:');
+        var title = stdin.readLineSync();
+        print('Digite um novo conteúdo para o card nº $id:');
+        var content = stdin.readLineSync();
+        await cc.updateCard(id, title, content);
+        break;
+
+      case '5':
+        print('Digite o código de card a ser excluído:');
+        await cc.deleteCard(int.tryParse(stdin.readLineSync()));
+        print('Card excluído com sucesso!');
+        break;
+
       default:
     }
     //print('$opcao : não é 6! portanto... vamos em frente...');
@@ -123,7 +148,6 @@ void main() async {
 
   print('''
 
-  Finalizar o programa com o saída: 
   ===========================
   Saíndo do sistema....
   Valeu, falows \o

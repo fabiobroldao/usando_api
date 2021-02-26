@@ -26,4 +26,34 @@ class CardController {
       return await cs.getCard(id);
     } finally {}
   }
+
+  Future<Card> postCard(String title, String content) async {
+    try {
+      var cards = await cs.getCards();
+      var id = cards.last.id + 1;
+      await cs.postCard(id, title, content);
+      return await cs.getCard(id);
+    } finally {}
+  }
+
+  Future<Card> deleteCard(int id) async {
+    try {
+      var cards = await cs.getCards();
+
+      for (var i = 0; i < cards.length; i++) {
+        if (cards[i].id == id) {
+          return await cs.deleteCard(id);
+        }
+      }
+
+      return null;
+    } finally {}
+  }
+
+  Future<Card> updateCard(int id, String title, String content) async {
+    try {
+      await cs.updateCard(id, title, content);
+      return await cs.getCard(id);
+    } finally {}
+  }
 }
