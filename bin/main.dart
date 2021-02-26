@@ -132,7 +132,8 @@ void main() async {
         var title = stdin.readLineSync();
         print('Digite um novo conteúdo para o card nº $id:');
         var content = stdin.readLineSync();
-        await cc.updateCard(id, title, content);
+        var card = await cc.updateCard(id, title, content);
+        print(card.toMap());
         break;
 
       case '5':
